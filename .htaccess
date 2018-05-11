@@ -1,0 +1,7 @@
+php_value register_globals off
+
+RewriteEngine On
+
+RewriteRule ^article/(.+)-([0-9]+)$ article.html?id=$2 [NC,L]
+RewriteRule ^author/(.+)-([0-9]+)$ author.html?id=$2 [NC,L]
+RewriteRule ^category/(.+)-([0-9]+)$ category.html?id=$2 [NC,L]

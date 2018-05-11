@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tomas Tulka's Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="favicon.ico">                    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/syntaxhighlighter-theme-eclipse.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">    
+  </head>
+  <body>    
+  
+    <main role="main" class="container" id="blog">
+      <loading-box v-if="loading"></loading-box>
+      <alert-box v-if="errored"></alert-box>
+      
+      <blog-post v-for="post in posts" v-bind:post="post"></blog-post>
+    </main> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/syntaxhighlighter.min.js"></script>    
+    <script src="js/axios.min.js"></script>
+     
+    <script src="app/components/LoadingBox.vue"></script>
+    <script src="app/components/AlertBox.vue"></script>
+    <script src="app/blog.js"></script>
+  </body>
+</html>
