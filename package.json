@@ -1,0 +1,32 @@
+{
+  "name": "blog-frontend",
+  "version": "1.0.0",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/net21cz/blog-frontend.git"
+  },
+  "author": "Tomas Tulka",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/net21cz/blog-frontend/issues"
+  },
+  "homepage": "https://github.com/net21cz/blog-frontend#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.21.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap-css-only": "^4.1.0",
+    "vue": "^2.5.16"
+  }
+}

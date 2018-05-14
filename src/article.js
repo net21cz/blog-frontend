@@ -1,3 +1,9 @@
+import Vue from 'vue';
+import axios from 'axios';
+
+import './components/AlertBox.vue';
+import './components/LoadingBox.vue';
+
 Vue.prototype.$http = axios;
 
 const endpointUrl = 'http://blog.net21.cz/api/';

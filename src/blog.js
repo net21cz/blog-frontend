@@ -1,6 +1,12 @@
+import Vue from 'vue';
+import axios from 'axios';
+
+import './components/AlertBox.vue';
+import './components/LoadingBox.vue';
+
 Vue.prototype.$http = axios;
 
-const endpointUrl = 'http://blog.net21.cz/api/';   
+const endpointUrl = 'http://blog.net21.cz/api/';
 
 const blogPostComponent = {
   props: ['post'],
@@ -8,10 +14,10 @@ const blogPostComponent = {
     <div class="blog-post">
       <h2 class="blog-post-title"><a v-bind:href="'/article/' + slugify(post.title) + '-' + post.id">{{ post.title }}</a></h2>
       <p class="blog-post-meta">
-        {{ new Date(parseInt(post.createdAt) * 1000).toLocaleDateString() }} 
-        by <a v-bind:href="'/author/' + slugify(post.author.name) + '-' + post.author.id">{{ post.author.name }}</a></p>  
+        {{ new Date(parseInt(post.createdAt) * 1000).toLocaleDateString() }}
+        by <a v-bind:href="'/author/' + slugify(post.author.name) + '-' + post.author.id">{{ post.author.name }}</a></p>
       <p class="blog-post-summary" v-html="post.summary"></p>
-    </div>  
+    </div>
   `,
   methods: {
     slugify: function(text) {
@@ -41,7 +47,7 @@ var vm = new Vue({
         this.posts = response.data.articles
           .map(article => [article.href, article.data])
           .map(article => ({ href: article[0], ...article[1],  }));
-          
+
         console.log("ARTICLES", this.posts)
       })
       .catch(error => {
