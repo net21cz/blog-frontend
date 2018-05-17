@@ -14,31 +14,40 @@ module.exports = {
     },
     module: {
         rules: [{
-           test: /\.css$/,
-           use: [
-               'style-loader',
-               'css-loader'
-           ]
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        }, {
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
+            }
         }]
     },
     externals: {
-      'vue': 'Vue',
-      'syntaxhighlighter': 'syntaxhighlighter',
-      'bootstrap-css-only': 'bootstrap-css-only'
+        'vue': 'Vue',
+        'syntaxhighlighter': 'syntaxhighlighter',
+        'bootstrap-css-only': 'bootstrap-css-only'
     },
     plugins: [
         new CleanWebpackPlugin([
-            'dist'
+                'dist'
         ]),
         new CopyWebpackPlugin([{
-               from: '**/*',
-               to: path.resolve(__dirname, 'dist'),context: 'resources/'
+                from: '**/*',
+                to: path.resolve(__dirname, 'dist'), context: 'resources/'
             }, {
-               from: 'node_modules/vue/dist/vue.min.js',
-               to: path.resolve(__dirname, 'dist/js')
+                from: 'node_modules/vue/dist/vue.min.js',
+                to: path.resolve(__dirname, 'dist/js')
             }, {
-               from: 'node_modules/bootstrap-css-only/css/bootstrap.min.css',
-               to: path.resolve(__dirname, 'dist/css')
+                from: 'node_modules/bootstrap-css-only/css/bootstrap.min.css',
+                to: path.resolve(__dirname, 'dist/css')
             }
         ])
     ]

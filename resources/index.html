@@ -1,26 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Tomas Tulka's Blog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="favicon.ico">                    
+    <link rel="icon" href="favicon.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/syntaxhighlighter-theme-eclipse.css" rel="stylesheet">
     <link href="css/blog.css" rel="stylesheet">
-  </head>
-  <body>    
-  
-    <main role="main" class="container" id="blog">
-      <loading-box v-if="loading"></loading-box>
-      <alert-box v-if="errored"></alert-box>
-      
-      <blog-post v-for="post in posts" v-bind:post="post"></blog-post>
-    </main> 
-    
-    <script src="js/vue.min.js"></script>
-    <script src="js/syntaxhighlighter.min.js"></script>
-     
-    <script src="js/blog.js"></script>
-  </body>
+</head>
+<body>
+
+<div id="blog">
+    <layout-main headed="true">
+
+        <loading-box v-if="loading"></loading-box>
+        <alert-box v-if="errored"></alert-box>
+
+        <blog-post v-for="post in posts" v-bind:post="post"></blog-post>
+
+        <paginator v-if="hasPages" v-bind:next="next" v-bind:previous="previous"></paginator>
+
+    </layout-main>
+</div>
+
+
+<script src="js/vue.min.js"></script>
+<script src="js/syntaxhighlighter.min.js"></script>
+
+<script src="js/blog.js"></script>
+</body>
 </html>
