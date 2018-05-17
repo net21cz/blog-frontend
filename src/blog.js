@@ -34,10 +34,10 @@ var vm = new Vue({
      },
      methods: {
          nextPage() {
-             alert('next!!!')
+             this.loadArticles(this.links.next)
          },
          previousPage() {
-             alert('previous!!!')
+             this.loadArticles(this.links.previous)
          },
          loadArticles(href) {
              repo.getArticles(href)
