@@ -1,16 +1,13 @@
 require('es6-promise').polyfill();
 
 import Vue from 'vue';
-import axios from 'axios';
 
-import './components/LayoutMain';
-import './components/AlertBox';
-import './components/LoadingBox';
-import './components/Article.vue';
+import './app/components/LayoutMain';
+import './app/components/AlertBox';
+import './app/components/LoadingBox';
+import './app/components/Article.vue';
 
-Vue.prototype.$http = axios;
-
-const endpointUrl = 'http://blog.net21.cz/api/';
+import repo from './repo/articles';
 
 var vm = new Vue({
      el: '#blog-article',
@@ -20,12 +17,9 @@ var vm = new Vue({
          errored: false
      },
      mounted() {
-         this.$http.get(endpointUrl + 'articles/' + 33)
-             .then((response) => {
-                 if (!response.data.data) {
-                     throw new Error('No data.');
-                 }
-                 this.article = response.data.data;
+         repo.getArticle(33)
+             .then((article) => {
+                 this.article = article;
              })
              .catch(error => {
                  console.log(error)
@@ -35,15 +29,5 @@ var vm = new Vue({
      },
      updated() {
          SyntaxHighlighter.highlight();
-     },
-     methods: {
-         slugify: function (text) {
-             return text.toString().toLowerCase()
-                 .replace(/\s+/g, '-')           // Replace spaces with -
-                 .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-                 .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-                 .replace(/^-+/, '')             // Trim - from start of text
-                 .replace(/-+$/, '');
-         }
      }
  })

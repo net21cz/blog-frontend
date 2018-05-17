@@ -1,26 +1,20 @@
 require('es6-promise').polyfill();
 
 import Vue from 'vue';
-import axios from 'axios';
 
-import './components/LayoutMain';
-import './components/AlertBox';
-import './components/LoadingBox';
-import './components/BlogPost';
-import './components/Paginator';
+import repo from './repo/articles';
 
-Vue.prototype.$http = axios;
-
-const endpointUrl = 'http://blog.net21.cz/api/';
+import './app/components/LayoutMain';
+import './app/components/AlertBox';
+import './app/components/LoadingBox';
+import './app/components/BlogPost';
+import './app/components/Paginator';
 
 var vm = new Vue({
      el: '#blog',
      data: {
          posts: [],
-         links: {
-             next: undefined,
-             previous: undefined
-         },
+         links: {},
          paginator: {
              page: 0
          },
@@ -39,35 +33,26 @@ var vm = new Vue({
          }
      },
      methods: {
-         sayHi() {
-             alert('hi!');
+         nextPage() {
+             alert('next!!!')
+         },
+         previousPage() {
+             alert('previous!!!')
+         },
+         loadArticles(href) {
+             repo.getArticles(href)
+                 .then((articles) => {
+                     this.links = articles.links;
+                     this.posts = articles.posts;
+                 })
+                 .catch(error => {
+                     console.log(error)
+                     this.errored = true
+                 })
+                 .finally(() => this.loading = false)
          }
      },
      mounted() {
-         this.$http.get(endpointUrl + 'articles')
-             .then((response) => {
-                 if (!response.data.articles) {
-                     throw new Error('No data.');
-                 }
-                 this.posts = response.data.articles
-                         .map(article => [article.href, article.data])
-                         .map(article => ({href: article[0], ...article[1],}));
-
-                 response.data.links.forEach(link => {
-                     switch (link.rel) {
-                         case 'next':
-                             this.links.next = link.href;
-                             break;
-                         case 'previous':
-                             this.links.previous = link.href;
-                             break;
-                     }
-                 });
-             })
-             .catch(error => {
-                 console.log(error)
-                 this.errored = true
-             })
-             .finally(() => this.loading = false)
+         this.loadArticles();
      }
  })
