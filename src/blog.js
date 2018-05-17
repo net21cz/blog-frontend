@@ -2,7 +2,7 @@ require('es6-promise').polyfill();
 
 import Vue from 'vue';
 
-import repo from './repo/articles';
+import repo from './repo/articlesRepo';
 
 import './app/components/LayoutMain';
 import './app/components/AlertBox';

@@ -7,7 +7,7 @@ import './app/components/AlertBox';
 import './app/components/LoadingBox';
 import './app/components/Article.vue';
 
-import repo from './repo/articles';
+import repo from './repo/articlesRepo';
 
 var vm = new Vue({
      el: '#blog-article',
