@@ -5,7 +5,7 @@ import Vue from 'vue';
 import './app/components/LayoutMain';
 import './app/components/AlertBox';
 import './app/components/LoadingBox';
-import './app/components/Article.vue';
+import './app/components/ArticleEntry';
 
 import repo from './repo/articlesRepo';
 

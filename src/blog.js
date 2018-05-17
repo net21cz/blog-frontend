@@ -10,7 +10,7 @@ import './app/components/LoadingBox';
 import './app/components/BlogPost';
 import './app/components/Paginator';
 
-var vm = new Vue({
+new Vue({
      el: '#blog',
      data: {
          posts: [],

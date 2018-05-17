@@ -32,7 +32,7 @@ module.exports = {
     },
     externals: {
         'vue': 'Vue',
-        'vuex': 'Vuex',
+        'vue-router': 'VueRouter',
         'syntaxhighlighter': 'syntaxhighlighter',
         'bootstrap-css-only': 'bootstrap-css-only'
     },
@@ -47,7 +47,7 @@ module.exports = {
                 from: 'node_modules/vue/dist/vue.min.js',
                 to: path.resolve(__dirname, 'dist/js')
             }, {
-                from: 'node_modules/vuex/dist/vuex.min.js',
+                from: 'node_modules/vue-router/dist/vue-router.min.js',
                 to: path.resolve(__dirname, 'dist/js')
             }, {
                 from: 'node_modules/bootstrap-css-only/css/bootstrap.min.css',

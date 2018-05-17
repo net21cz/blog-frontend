@@ -32,6 +32,6 @@
     "bootstrap-css-only": "^4.1.0",
     "es6-promise": "^4.2.4",
     "vue": "^2.5.16",
-    "vuex": "^3.0.1"
+    "vue-router": "^3.0.1"
   }
 }
